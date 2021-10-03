@@ -9,7 +9,7 @@ import NewlineIterator from "newline-iterator";
 
 const iterator = new NewlineIterator("some\r\nstring\ncombination\r");
 const results = [];
-for (const value of iterator) results.push(value);
+for (const line of iterator) results.push(line);
 console.log(results); // ["some", "string", "combination"];
 ```
 

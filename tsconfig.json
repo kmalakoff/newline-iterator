@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "downlevelIteration": true,
+    "lib": ["es2015", "dom"],
     "module": "esnext",
     "moduleResolution": "node",
-    "types": ["mocha", "chai"],
     "sourceMap": true,
-    "lib": ["es2015", "dom"],
-    "downlevelIteration": true
+    "types": ["mocha", "chai"]
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"],
+  "include": ["src"]
 }
