@@ -1,0 +1,2 @@
+import t from"index-of-newline";class s{constructor(t){this.string=t,this.offset=0}next(){if(this.offset>=this.string.length)return null;let[s,e]=t(this.string,this.offset,!0);s<0&&(s=this.string.length-this.offset,e=0);const i=this.string.substr(this.offset,s-this.offset);return this.offset=s+e,i}[Symbol.iterator](){return{next:()=>{const t=this.next();return null===t?{value:void 0,done:!0}:{value:t,done:!1}}}}}export{s as default};
+//# sourceMappingURL=index.js.map
