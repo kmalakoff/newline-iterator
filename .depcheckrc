@@ -1,1 +1,0 @@
-ignores: ["newline-iterator", "ts-node", "karma-*", "webpack", "ts-loader", "typedoc", "typedoc-plugin-rename-defaults"]

@@ -26,14 +26,14 @@ describe("newline-iterator", function () {
       const iterator = new NewlineIterator(string);
 
       const results = [];
-      for (const value of iterator) results.push(value);
+      for (const line of iterator) results.push(line);
       assert.deepEqual(results, ["some", "string", "combination"]);
     });
 
     it("no breaks", function () {
       const iterator = new NewlineIterator("somestringcombination");
       const results = [];
-      for (const value of iterator) results.push(value);
+      for (const line of iterator) results.push(line);
       assert.deepEqual(results, ["somestringcombination"]);
     });
   });
