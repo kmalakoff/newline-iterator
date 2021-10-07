@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { assert } = require("chai");
-const NewlineIterator = require("newline-iterator/dist/umd/index.js");
+const newlineIterator = require("newline-iterator/dist/umd/newline-iterator.js");
 
-describe("exports newline-iterator/dist/umd/index.js", function () {
+describe("exports newline-iterator/dist/umd/newline-iterator.js", function () {
   it("first newline", function () {
-    const iterator = new NewlineIterator("some\r\nstring\ncombination\r");
-    assert.equal(iterator.next(), "some");
+    const iterator = newlineIterator("some\r\nstring\ncombination\r");
+    assert.deepEqual(iterator.next(), { value: "some", done: false });
   });
 });

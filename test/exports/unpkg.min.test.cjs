@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { assert } = require("chai");
-const newlineIterator = require("newline-iterator");
+const newlineIterator = require("newline-iterator/dist/umd/newline-iterator.min.js");
 
-describe("exports .cjs", function () {
+describe("exports newline-iterator/dist/umd/newline-iterator.min.js", function () {
   it("first newline", function () {
     const iterator = newlineIterator("some\r\nstring\ncombination\r");
     assert.deepEqual(iterator.next(), { value: "some", done: false });

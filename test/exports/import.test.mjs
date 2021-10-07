@@ -1,9 +1,9 @@
 import { assert } from "chai";
-import NewlineIterator from "newline-iterator";
+import newlineIterator from "newline-iterator";
 
 describe("exports .mjs", function () {
   it("first newline", function () {
-    const iterator = new NewlineIterator("some\r\nstring\ncombination\r");
-    assert.equal(iterator.next(), "some");
+    const iterator = newlineIterator("some\r\nstring\ncombination\r");
+    assert.deepEqual(iterator.next(), { value: "some", done: false });
   });
 });
