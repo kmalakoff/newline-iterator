@@ -1,29 +1,29 @@
 import { assert } from "chai";
-import NewlineIterator from "newline-iterator";
+import newlineIterator from "newline-iterator";
 
 describe("newline-iterator", function () {
   describe("next", function () {
     it("all values", function () {
       const string = "some\r\nstring\ncombination\r";
-      const iterator = new NewlineIterator(string);
+      const iterator = newlineIterator(string);
 
-      assert.equal(iterator.next(), "some");
-      assert.equal(iterator.next(), "string");
-      assert.equal(iterator.next(), "combination");
-      assert.equal(iterator.next(), null);
+      assert.deepEqual(iterator.next(), { value: "some", done: false });
+      assert.deepEqual(iterator.next(), { value: "string", done: false });
+      assert.deepEqual(iterator.next(), { value: "combination", done: false });
+      assert.deepEqual(iterator.next(), { value: undefined, done: true });
     });
 
     it("no breaks", function () {
-      const iterator = new NewlineIterator("somestringcombination");
-      assert.equal(iterator.next(), "somestringcombination");
-      assert.equal(iterator.next(), null);
+      const iterator = newlineIterator("somestringcombination");
+      assert.deepEqual(iterator.next(), { value: "somestringcombination", done: false });
+      assert.deepEqual(iterator.next(), { value: undefined, done: true });
     });
   });
 
   describe("iterator", function () {
     it("all values", function () {
       const string = "some\r\nstring\ncombination\r";
-      const iterator = new NewlineIterator(string);
+      const iterator = newlineIterator(string);
 
       const results = [];
       for (const line of iterator) results.push(line);
@@ -31,7 +31,7 @@ describe("newline-iterator", function () {
     });
 
     it("no breaks", function () {
-      const iterator = new NewlineIterator("somestringcombination");
+      const iterator = newlineIterator("somestringcombination");
       const results = [];
       for (const line of iterator) results.push(line);
       assert.deepEqual(results, ["somestringcombination"]);
