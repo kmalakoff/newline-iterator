@@ -1,39 +1,19 @@
+export interface IterableIterator {
+    next(): IteratorResult<string>;
+    [Symbol.iterator](): IteratorResult<string>;
+}
 /**
- * String iterator CR, LF, or CRLF
+ * Create a newlinw iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
  *
  * @param string The string to iterate through
+ *
+ * ```typescript
+ * import newlineIterator from "newline-iterator";
+ *
+ * const iterator = newlineIterator("some\r\nstring\ncombination\r");
+ * const results = [];
+ * for (const line of iterator) results.push(line);
+ * console.log(results); // ["some", "string", "combination"];
+ * ```
  */
-export default class NewlineIterator {
-    protected string: string;
-    protected offset: number;
-    constructor(string: string);
-    /**
-     * Get the next line if it exists
-     *
-     * @return The next line or null if there are no more lines
-     *
-     * ```typescript
-     * import NewlineIterator from "newline-iterator";
-     *
-     * const iterator = new NewlineIterator("some\r\nstring\ncombination\r");
-     * console.log(iterator.next()); // "some"
-     * console.log(iterator.next()); // "string"
-     * console.log(iterator.next()); // "combination"
-     * console.log(iterator.next()); // null
-     * ```
-     */
-    next(): string | null;
-    /**
-     * Generates an iterator using the Symbol.iterator interface
-     *
-     * ```typescript
-     * import NewlineIterator from "newline-iterator";
-     *
-     * const iterator = new NewlineIterator("some\r\nstring\ncombination\r");
-     * const results = [];
-     * for (const line of iterator) results.push(line);
-     * console.log(results); // ["some", "string", "combination"];
-     * ```
-     */
-    [Symbol.iterator](): Iterator<string>;
-}
+export default function newlineIterator(string: string): IterableIterator;

@@ -5,9 +5,9 @@ Line-by-line string iterator
 ### Example 1
 
 ```typescript
-import NewlineIterator from "newline-iterator";
+import newlineIterator from "newline-iterator";
 
-const iterator = new NewlineIterator("some\r\nstring\ncombination\r");
+const iterator = newlineIterator("some\r\nstring\ncombination\r");
 const results = [];
 for (const line of iterator) results.push(line);
 console.log(results); // ["some", "string", "combination"];
@@ -16,13 +16,13 @@ console.log(results); // ["some", "string", "combination"];
 ### Example 2
 
 ```typescript
-import NewlineIterator from "newline-iterator";
+import newlineIterator from "newline-iterator";
 
-const iterator = new NewlineIterator("some\r\nstring\ncombination\r");
-console.log(iterator.next()); // "some"
-console.log(iterator.next()); // "string"
-console.log(iterator.next()); // "combination"
-console.log(iterator.next()); // null
+const iterator = newlineIterator("some\r\nstring\ncombination\r");
+console.log(iterator.next()); // { value: "some", done: false }
+console.log(iterator.next()); // { value: "srting", done: false }
+console.log(iterator.next()); // { value: "combination", done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
 ```
 
 ### Documentation
