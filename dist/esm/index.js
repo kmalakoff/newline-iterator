@@ -14,10 +14,11 @@ import indexOfNewline from 'index-of-newline';
  * console.log(results); // ["some", "string", "combination"];
  * ```
  */
+
 function newlineIterator(string) {
   let offset = 0;
-  const iterator = {
-    next: function () {
+  return {
+    next() {
       if (offset >= string.length) return {
         value: undefined,
         done: true
@@ -36,11 +37,12 @@ function newlineIterator(string) {
         done: false
       };
     },
-    [Symbol.iterator]: function () {
+
+    [Symbol.iterator]() {
       return this;
     }
+
   };
-  return iterator;
 }
 
 export { newlineIterator as default };

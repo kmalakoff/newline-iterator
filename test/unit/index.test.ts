@@ -14,7 +14,8 @@ describe("newline-iterator", function () {
     });
 
     it("no breaks", function () {
-      const iterator = newlineIterator("somestringcombination");
+      const string = "somestringcombination";
+      const iterator = newlineIterator(string);
       assert.deepEqual(iterator.next(), { value: "somestringcombination", done: false });
       assert.deepEqual(iterator.next(), { value: undefined, done: true });
     });
@@ -31,7 +32,8 @@ describe("newline-iterator", function () {
     });
 
     it("no breaks", function () {
-      const iterator = newlineIterator("somestringcombination");
+      const string = "somestringcombination";
+      const iterator = newlineIterator(string);
       const results = [];
       for (const line of iterator) results.push(line);
       assert.deepEqual(results, ["somestringcombination"]);

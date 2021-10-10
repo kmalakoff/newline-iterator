@@ -96,10 +96,10 @@
    * console.log(results); // ["some", "string", "combination"];
    * ```
    */
+
   function newlineIterator(string) {
     var offset = 0;
-
-    var iterator = _defineProperty({
+    return _defineProperty({
       next: function next() {
         if (offset >= string.length) return {
           value: undefined,
@@ -126,8 +126,6 @@
     }, Symbol.iterator, function () {
       return this;
     });
-
-    return iterator;
   }
 
   return newlineIterator;
