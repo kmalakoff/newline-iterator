@@ -1,5 +1,5 @@
-import indexOfNewline from 'index-of-newline';
-
+import indexOfNewline from "index-of-newline";
+const hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
 /**
  * Create a newlinw iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
  *
@@ -15,9 +15,9 @@ import indexOfNewline from 'index-of-newline';
  * ```
  */
 
-function newlineIterator(string) {
+export default function newlineIterator(string) {
   let offset = 0;
-  return {
+  const iterator = {
     next() {
       if (offset >= string.length) return {
         value: undefined,
@@ -36,14 +36,16 @@ function newlineIterator(string) {
         value: line,
         done: false
       };
-    },
-
-    [Symbol.iterator]() {
-      return this;
     }
 
   };
-}
 
-export { newlineIterator as default };
+  if (hasIterator) {
+    iterator[Symbol.iterator] = function () {
+      return this;
+    };
+  }
+
+  return iterator;
+}
 //# sourceMappingURL=index.js.map

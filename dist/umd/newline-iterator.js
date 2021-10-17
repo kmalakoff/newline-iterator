@@ -8,21 +8,6 @@
 
   var indexOfNewline__default = /*#__PURE__*/_interopDefaultLegacy(indexOfNewline);
 
-  function _defineProperty(obj, key, value) {
-    if (key in obj) {
-      Object.defineProperty(obj, key, {
-        value: value,
-        enumerable: true,
-        configurable: true,
-        writable: true
-      });
-    } else {
-      obj[key] = value;
-    }
-
-    return obj;
-  }
-
   function _slicedToArray(arr, i) {
     return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
   }
@@ -82,6 +67,7 @@
     throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
   }
 
+  var hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
   /**
    * Create a newlinw iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
    *
@@ -99,7 +85,7 @@
 
   function newlineIterator(string) {
     var offset = 0;
-    return _defineProperty({
+    var iterator = {
       next: function next() {
         if (offset >= string.length) return {
           value: undefined,
@@ -123,9 +109,15 @@
           done: false
         };
       }
-    }, Symbol.iterator, function () {
-      return this;
-    });
+    };
+
+    if (hasIterator) {
+      iterator[Symbol.iterator] = function () {
+        return this;
+      };
+    }
+
+    return iterator;
   }
 
   return newlineIterator;

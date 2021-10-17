@@ -1,5 +1,7 @@
 import indexOfNewline from "index-of-newline";
 
+const hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
+
 /**
  * Create a newlinw iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
  *
@@ -16,7 +18,7 @@ import indexOfNewline from "index-of-newline";
  */
 export default function newlineIterator(string: string): IterableIterator<string> {
   let offset = 0;
-  return {
+  const iterator = {
     next(): IteratorResult<string, boolean> {
       if (offset >= string.length) return { value: undefined, done: true };
       let [index, skip] = indexOfNewline(string, offset, true) as number[];
@@ -28,8 +30,13 @@ export default function newlineIterator(string: string): IterableIterator<string
       offset = index + skip;
       return { value: line, done: false };
     },
-    [Symbol.iterator](): Iterator<string> {
+  };
+
+  if (hasIterator) {
+    iterator[Symbol.iterator] = function (): Iterator<string> {
       return this;
-    },
-  } as IterableIterator<string>;
+    };
+  }
+
+  return iterator as IterableIterator<string>;
 }
