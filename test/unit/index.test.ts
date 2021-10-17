@@ -1,6 +1,8 @@
 import { assert } from "chai";
 import newlineIterator from "newline-iterator";
 
+const hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
+
 describe("newline-iterator", function () {
   describe("next", function () {
     it("all values", function () {
@@ -21,22 +23,23 @@ describe("newline-iterator", function () {
     });
   });
 
-  describe("iterator", function () {
-    it("all values", function () {
-      const string = "some\r\nstring\ncombination\r";
-      const iterator = newlineIterator(string);
+  !hasIterator ||
+    describe("iterator", function () {
+      it("all values", function () {
+        const string = "some\r\nstring\ncombination\r";
+        const iterator = newlineIterator(string);
 
-      const results = [];
-      for (const line of iterator) results.push(line);
-      assert.deepEqual(results, ["some", "string", "combination"]);
-    });
+        const results = [];
+        for (const line of iterator) results.push(line);
+        assert.deepEqual(results, ["some", "string", "combination"]);
+      });
 
-    it("no breaks", function () {
-      const string = "somestringcombination";
-      const iterator = newlineIterator(string);
-      const results = [];
-      for (const line of iterator) results.push(line);
-      assert.deepEqual(results, ["somestringcombination"]);
+      it("no breaks", function () {
+        const string = "somestringcombination";
+        const iterator = newlineIterator(string);
+        const results = [];
+        for (const line of iterator) results.push(line);
+        assert.deepEqual(results, ["somestringcombination"]);
+      });
     });
-  });
 });
