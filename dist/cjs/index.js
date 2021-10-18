@@ -23,7 +23,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
 /**
- * Create a newlinw iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
+ * Create a newline iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
  *
  * @param string The string to iterate through
  *
@@ -52,7 +52,7 @@ function newlineIterator(string) {
           skip = _ref2[1];
 
       if (index < 0) {
-        index = string.length - offset;
+        index = string.length;
         skip = 0;
       }
 

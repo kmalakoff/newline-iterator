@@ -1,5 +1,5 @@
 /**
- * Create a newlinw iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
+ * Create a newline iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
  *
  * @param string The string to iterate through
  *
