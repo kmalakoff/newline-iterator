@@ -15,6 +15,15 @@ describe("newline-iterator", function () {
       assert.deepEqual(iterator.next(), { value: undefined, done: true });
     });
 
+    it("no end", function () {
+      const string = "some\r\nstring\ncombination";
+      const iterator = newlineIterator(string);
+      assert.deepEqual(iterator.next(), { value: "some", done: false });
+      assert.deepEqual(iterator.next(), { value: "string", done: false });
+      assert.deepEqual(iterator.next(), { value: "combination", done: false });
+      assert.deepEqual(iterator.next(), { value: undefined, done: true });
+    });
+
     it("no breaks", function () {
       const string = "somestringcombination";
       const iterator = newlineIterator(string);
