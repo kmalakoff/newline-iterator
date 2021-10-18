@@ -3,7 +3,7 @@ import indexOfNewline from "index-of-newline";
 const hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
 
 /**
- * Create a newlinw iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
+ * Create a newline iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
  *
  * @param string The string to iterate through
  *
@@ -23,7 +23,7 @@ export default function newlineIterator(string: string): IterableIterator<string
       if (offset >= string.length) return { value: undefined, done: true };
       let [index, skip] = indexOfNewline(string, offset, true) as number[];
       if (index < 0) {
-        index = string.length - offset;
+        index = string.length;
         skip = 0;
       }
       const line = string.substr(offset, index - offset);
