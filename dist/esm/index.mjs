@@ -48,4 +48,4 @@ export default function newlineIterator(string) {
 
   return iterator;
 }
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=index.mjs.map
