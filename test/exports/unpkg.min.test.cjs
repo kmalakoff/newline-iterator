@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { assert } = require("chai");
+const assert = require("assert");
 const newlineIterator = require("newline-iterator/dist/umd/newline-iterator.min.js");
 
 describe("exports newline-iterator/dist/umd/newline-iterator.min.js", function () {
