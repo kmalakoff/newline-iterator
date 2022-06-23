@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import assert from "assert";
 import newlineIterator from "newline-iterator";
 
 const hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;

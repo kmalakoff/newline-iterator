@@ -1,4 +1,4 @@
-import { assert } from "chai";
+import assert from "assert";
 import newlineIterator from "newline-iterator";
 
 describe("exports .ts", function () {
