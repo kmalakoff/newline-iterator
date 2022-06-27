@@ -1,6 +1,6 @@
-import indexOfNewline from "index-of-newline";
+import indexOfNewline from 'index-of-newline';
 
-const hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
+const hasIterator = typeof Symbol !== 'undefined' && Symbol.iterator;
 
 /**
  * Create a newline iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
