@@ -14,7 +14,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsds build:dist",
+    "build": "tsds build",
     "deploy": "tsds deploy",
     "format": "tsds format",
     "lint": "tsds lint",
@@ -50,10 +50,10 @@
     "string"
   ],
   "dependencies": {
-    "index-of-newline": "^1.1.4"
+    "index-of-newline": "^1.1.6"
   },
   "devDependencies": {
-    "ts-dev-stack": "^0.3.3"
+    "ts-dev-stack": "^0.4.1"
   },
   "engines": {
     "node": ">=0.8"
@@ -66,7 +66,12 @@
     },
     "./*": "./*"
   },
-  "source": "src/index.ts",
+  "tsds": {
+    "source": "src/index.ts",
+    "globals": {
+      "index-of-newline": "indexOfNewline"
+    }
+  },
   "type": "module",
   "types": "dist/types/index.d.ts",
   "unpkg": "dist/umd/newline-iterator.js"
