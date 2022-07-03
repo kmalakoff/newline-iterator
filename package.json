@@ -1,7 +1,7 @@
 {
   "name": "newline-iterator",
   "description": "Line-by-line string iterator",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "author": {
     "email": "kmalakoff@gmail.com",
     "name": "Kevin Malakoff",
