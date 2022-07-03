@@ -127,4 +127,3 @@
     return newlineIterator;
 
 }));
-//# sourceMappingURL=newline-iterator.js.map
