@@ -19,7 +19,7 @@
     "format": "tsds format",
     "lint": "tsds lint",
     "test": "tsds test:node && tsds test:browser",
-    "version2": "tsds version"
+    "version": "tsds version"
   },
   "homepage": "https://github.com/kmalakoff/newline-iterator#README.md",
   "repository": {
@@ -49,10 +49,10 @@
     "string"
   ],
   "dependencies": {
-    "index-of-newline": "^1.1.7"
+    "index-of-newline": "^1.1.8"
   },
   "devDependencies": {
-    "ts-dev-stack": "^0.6.5"
+    "ts-dev-stack": "^0.6.6"
   },
   "engines": {
     "node": ">=0.8"
