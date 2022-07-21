@@ -21,7 +21,9 @@ const hasIterator = typeof Symbol !== 'undefined' && Symbol.iterator;
                 value: undefined,
                 done: true
             };
-            let [index, skip] = indexOfNewline(string, offset, true);
+            const args = indexOfNewline(string, offset, true);
+            let index = args[0];
+            let skip = args[1];
             if (index < 0) {
                 index = string.length;
                 skip = 0;
