@@ -21,7 +21,9 @@ export default function newlineIterator(string: string): IterableIterator<string
   const iterator = {
     next(): IteratorResult<string, boolean> {
       if (offset >= string.length) return { value: undefined, done: true };
-      let [index, skip] = indexOfNewline(string, offset, true) as number[];
+      const args = indexOfNewline(string, offset, true) as number[];
+      let index = args[0];
+      let skip = args[1];
       if (index < 0) {
         index = string.length;
         skip = 0;

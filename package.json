@@ -1,34 +1,7 @@
 {
   "name": "newline-iterator",
-  "description": "Line-by-line string iterator",
   "version": "0.3.8",
-  "author": {
-    "email": "kmalakoff@gmail.com",
-    "name": "Kevin Malakoff",
-    "url": "https://github.com/kmalakoff"
-  },
-  "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.mjs",
-  "files": [
-    "dist"
-  ],
-  "scripts": {
-    "build": "tsds build",
-    "deploy": "tsds deploy",
-    "format": "tsds format",
-    "lint": "tsds lint",
-    "test": "tsds test:node && tsds test:browser",
-    "version2": "tsds version"
-  },
-  "homepage": "https://github.com/kmalakoff/newline-iterator#README.md",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/kmalakoff/newline-iterator.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kmalakoff/newline-iterator/issues"
-  },
+  "description": "Line-by-line string iterator",
   "keywords": [
     "CR",
     "CRLF",
@@ -48,15 +21,21 @@
     "split",
     "string"
   ],
-  "dependencies": {
-    "index-of-newline": "^1.1.7"
+  "homepage": "https://github.com/kmalakoff/newline-iterator#README.md",
+  "bugs": {
+    "url": "https://github.com/kmalakoff/newline-iterator/issues"
   },
-  "devDependencies": {
-    "ts-dev-stack": "^0.6.5"
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kmalakoff/newline-iterator.git"
   },
-  "engines": {
-    "node": ">=0.8"
+  "license": "MIT",
+  "author": {
+    "name": "Kevin Malakoff",
+    "email": "kmalakoff@gmail.com",
+    "url": "https://github.com/kmalakoff"
   },
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/esm/index.mjs",
@@ -65,13 +44,35 @@
     },
     "./*": "./*"
   },
+  "main": "dist/cjs/index.js",
+  "unpkg": "dist/umd/newline-iterator.js",
+  "module": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsds build",
+    "deploy": "tsds deploy",
+    "format": "tsds format",
+    "lint": "tsds lint",
+    "test": "tsds test:node && tsds test:browser",
+    "test:engines": "nvu engines tsds test:node && tsds test:browser",
+    "version": "tsds version"
+  },
+  "dependencies": {
+    "index-of-newline": "^1.1.8"
+  },
+  "devDependencies": {
+    "ts-dev-stack": "^0.6.15"
+  },
+  "engines": {
+    "node": ">=0.8"
+  },
   "tsds": {
     "source": "src/index.ts",
     "globals": {
       "index-of-newline": "indexOfNewline"
     }
-  },
-  "type": "module",
-  "types": "dist/types/index.d.ts",
-  "unpkg": "dist/umd/newline-iterator.js"
+  }
 }
