@@ -64,7 +64,7 @@
     "index-of-newline": "^1.1.8"
   },
   "devDependencies": {
-    "ts-dev-stack": "^0.6.12"
+    "ts-dev-stack": "^0.6.13"
   },
   "engines": {
     "node": ">=0.8"
