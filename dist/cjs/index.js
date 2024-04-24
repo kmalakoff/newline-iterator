@@ -2,8 +2,32 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-module.exports = newlineIterator;
-var _indexOfNewline = _interopRequireDefault(require("index-of-newline"));
+Object.defineProperty(exports, /**
+ * Create a newline iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
+ *
+ * @param string The string to iterate through
+ *
+ * ```typescript
+ * import newlineIterator from "newline-iterator";
+ *
+ * const iterator = newlineIterator("some\r\nstring\ncombination\r");
+ * const results = [];
+ * for (const line of iterator) results.push(line);
+ * console.log(results); // ["some", "string", "combination"];
+ * ```
+ */ "default", {
+    enumerable: true,
+    get: function() {
+        return newlineIterator;
+    }
+});
+var _indexofnewline = /*#__PURE__*/ _interop_require_default(require("index-of-newline"));
+function _interop_require_default(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+var hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
 function newlineIterator(string) {
     var offset = 0;
     var iterator = {
@@ -12,7 +36,7 @@ function newlineIterator(string) {
                 value: undefined,
                 done: true
             };
-            var args = (0, _indexOfNewline).default(string, offset, true);
+            var args = (0, _indexofnewline.default)(string, offset, true);
             var index = args[0];
             var skip = args[1];
             if (index < 0) {
@@ -34,9 +58,4 @@ function newlineIterator(string) {
     }
     return iterator;
 }
-function _interopRequireDefault(obj) {
-    return obj && obj.__esModule ? obj : {
-        default: obj
-    };
-}
-var hasIterator = typeof Symbol !== "undefined" && Symbol.iterator;
+/* CJS INTEROP */ if (exports.__esModule && exports.default) { Object.defineProperty(exports.default, '__esModule', { value: true }); for (var key in exports) exports.default[key] = exports[key]; module.exports = exports.default; }
