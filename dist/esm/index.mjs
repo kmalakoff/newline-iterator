@@ -42,4 +42,4 @@ const hasIterator = typeof Symbol !== 'undefined' && Symbol.iterator;
         };
     }
     return iterator;
-};
+}
