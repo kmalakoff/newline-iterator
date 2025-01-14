@@ -1,1 +1,1 @@
-ignores: ["newline-iterator", "@types/*", "@biomejs/*", "tsds-web-test-runner"]
+ignores: ["@types/*", "newline-iterator", "@biomejs/*", "tsds-web-test-runner"]
