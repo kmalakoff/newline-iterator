@@ -20,7 +20,7 @@ import newlineIterator from "newline-iterator";
 
 const iterator = newlineIterator("some\r\nstring\ncombination\r");
 console.log(iterator.next()); // { value: "some", done: false }
-console.log(iterator.next()); // { value: "srting", done: false }
+console.log(iterator.next()); // { value: "string", done: false }
 console.log(iterator.next()); // { value: "combination", done: false }
 console.log(iterator.next()); // { value: undefined, done: true }
 ```
