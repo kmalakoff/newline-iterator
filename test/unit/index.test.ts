@@ -13,7 +13,7 @@ describe('newline-iterator', () => {
       assert.deepEqual(iterator.next(), { value: 'some', done: false });
       assert.deepEqual(iterator.next(), { value: 'string', done: false });
       assert.deepEqual(iterator.next(), { value: 'combination', done: false });
-      assert.deepEqual(iterator.next(), { value: undefined, done: true });
+      assert.deepEqual(iterator.next(), { value: null, done: true });
     });
 
     it('no end', () => {
@@ -22,7 +22,7 @@ describe('newline-iterator', () => {
       assert.deepEqual(iterator.next(), { value: 'some', done: false });
       assert.deepEqual(iterator.next(), { value: 'string', done: false });
       assert.deepEqual(iterator.next(), { value: 'combination', done: false });
-      assert.deepEqual(iterator.next(), { value: undefined, done: true });
+      assert.deepEqual(iterator.next(), { value: null, done: true });
     });
 
     it('no breaks', () => {
