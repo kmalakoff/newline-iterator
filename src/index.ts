@@ -1,4 +1,4 @@
-import indexOfNewline from 'index-of-newline';
+const REGEX_NEW_LINE = /\r?\n|\r/g;
 
 const hasIterator = typeof Symbol !== 'undefined' && Symbol.iterator;
 
@@ -17,20 +17,11 @@ const hasIterator = typeof Symbol !== 'undefined' && Symbol.iterator;
  * ```
  */
 export default function newlineIterator(string: string): IterableIterator<string> {
-  let offset = 0;
+  const lines = string.split(REGEX_NEW_LINE).reverse();
   const iterator = {
     next(): IteratorResult<string, boolean> {
-      if (offset >= string.length) return { value: undefined, done: true };
-      const args = indexOfNewline(string, offset, true) as number[];
-      let index = args[0];
-      let skip = args[1];
-      if (index < 0) {
-        index = string.length;
-        skip = 0;
-      }
-      const line = string.substr(offset, index - offset);
-      offset = index + skip;
-      return { value: line, done: false };
+      if (lines.length === 1 && lines[0] === '') return { value: null, done: true };
+      return lines.length > 0 ? { value: lines.pop(), done: false } : { value: null, done: true };
     },
   };
 
