@@ -1,6 +1,8 @@
 const REGEX_NEW_LINE = /\r?\n|\r/g;
 
-const hasIterator = typeof Symbol !== 'undefined' && Symbol.iterator;
+const root = typeof window === 'undefined' ? global : window;
+// biome-ignore lint/suspicious/noShadowRestrictedNames: Legacy
+const Symbol: SymbolConstructor = typeof root.Symbol === 'undefined' ? ({ iterator: undefined } as unknown as SymbolConstructor) : root.Symbol;
 
 /**
  * Create a newline iterator recognizing CR, LF, and CRLF using the Symbol.iterator interface
@@ -23,13 +25,9 @@ export default function newlineIterator(string: string): IterableIterator<string
       if (lines.length === 1 && lines[0] === '') return { value: null, done: true };
       return lines.length > 0 ? { value: lines.pop(), done: false } : { value: null, done: true };
     },
-  };
-
-  if (hasIterator) {
-    iterator[Symbol.iterator] = function (): Iterator<string> {
+    [Symbol.iterator](): Iterator<string> {
       return this;
-    };
-  }
-
+    },
+  };
   return iterator as IterableIterator<string>;
 }
