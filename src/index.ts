@@ -22,8 +22,10 @@ export default function newlineIterator(string: string): IterableIterator<string
   const lines = string.split(REGEX_NEW_LINE).reverse();
   const iterator = {
     next(): IteratorResult<string, boolean> {
-      if (lines.length === 1 && lines[0] === '') return { value: null, done: true };
-      return lines.length > 0 ? { value: lines.pop(), done: false } : { value: null, done: true };
+      if (lines.length === 0) return { value: null, done: true };
+      const value = lines.pop();
+      if (lines.length === 0 && value.length === 0) return { value: null, done: true };
+      return { value, done: false };
     },
     [Symbol.iterator](): Iterator<string> {
       return this;
