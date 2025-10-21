@@ -1,5 +1,4 @@
 import assert from 'assert';
-// @ts-ignore
 import newlineIterator from 'newline-iterator';
 
 const hasIterator = typeof Symbol !== 'undefined' && Symbol.iterator;
