@@ -1,6 +1,6 @@
 {
   "name": "newline-iterator",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Line-by-line string iterator",
   "keywords": [
     "CR",
