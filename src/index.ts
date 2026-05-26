@@ -21,9 +21,9 @@ const Symbol: SymbolConstructor = typeof root.Symbol === 'undefined' ? ({ iterat
 export default function newlineIterator(string: string): IterableIterator<string> {
   const lines = string.split(REGEX_NEW_LINE).reverse();
   const iterator = {
-    next(): IteratorResult<string, boolean> {
+    next(): IteratorResult<string, null> {
       if (lines.length === 0) return { value: null, done: true };
-      const value = lines.pop();
+      const value = lines.pop() ?? '';
       if (lines.length === 0 && value.length === 0) return { value: null, done: true };
       return { value, done: false };
     },
