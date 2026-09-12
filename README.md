@@ -1,30 +1,24 @@
-## newline-iterator
+# newline-iterator
 
-Line-by-line string iterator
+Iterate over a string one line at a time. It recognizes CRLF, LF, and CR line endings.
 
-### Example 1
-
-```typescript
-import newlineIterator from "newline-iterator";
-
-const iterator = newlineIterator("some\r\nstring\ncombination\r");
-const results = [];
-for (const line of iterator) results.push(line);
-console.log(results); // ["some", "string", "combination"];
+```bash
+npm install newline-iterator
 ```
 
-### Example 2
+```js
+var newlineIterator = require('newline-iterator');
 
-```typescript
-import newlineIterator from "newline-iterator";
-
-const iterator = newlineIterator("some\r\nstring\ncombination\r");
-console.log(iterator.next()); // { value: "some", done: false }
-console.log(iterator.next()); // { value: "string", done: false }
-console.log(iterator.next()); // { value: "combination", done: false }
-console.log(iterator.next()); // { value: undefined, done: true }
+var iterator = newlineIterator('some\r\nstring\ncombination\r');
+var lines = [];
+var result = iterator.next();
+while (!result.done) {
+  lines.push(result.value);
+  result = iterator.next();
+}
+console.log(lines); // [ 'some', 'string', 'combination' ]
 ```
 
-### Documentation
+The returned object implements the iterator protocol. Calling `next()` returns each line with `done: false`, then returns `{ value: null, done: true }` at the end.
 
-[API Docs](https://kmalakoff.github.io/newline-iterator/)
+[API docs](https://kmalakoff.github.io/newline-iterator/)
