@@ -32,7 +32,7 @@ describe('newline-iterator', () => {
         value: 'somestringcombination',
         done: false,
       });
-      assert.deepEqual(iterator.next(), { value: undefined, done: true });
+      assert.deepEqual(iterator.next(), { value: null, done: true });
     });
   });
 
